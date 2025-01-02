@@ -91,7 +91,7 @@ function startProcessing() {
     ylightSlider.value = 0.00;
     ylightSlider.addEventListener('input', sliderUpdate);
 
-    zlightSlider.value = -100.00;
+    zlightSlider.value = 0.00;
     zlightSlider.addEventListener('input', sliderUpdate);
 
     lightingCheckbox = document.getElementById('lighting-checkbox');
