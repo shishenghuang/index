@@ -17,12 +17,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/style.css">
-        <title>Image Relighting</title>
+        <title>图像重光照</title>
     </head>
     <body>
         <!-- Navbar -->
         <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand disabled text-light">Image Relighting</a>
+            <a class="navbar-brand disabled text-light">图像重光照</a>
         
             <div class="" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -37,25 +37,25 @@
         <div class="container">
             <br>
             <div class="row">
-                <h6>This project aims to add light to an image, provided the image's depthmap. For details, check Github README.</p>
+                <h6>本项目由北京师范大学创建，主要功能为给基于深度图的单张图片重光照。</p>
             </div>
             <br>
             <div class="row">
-                <h6><u>Controls:</u></h6>
+                <h6><u>鼠标控制方式:</u></h6>
             </div>
             <div class="row">
-                <div class="col">Drag mouse on image</div>
+                <div class="col">左键单击图片，移动鼠标</div>
                 :
-                <div class="col">Adjust (x, y) of light source</div>
+                <div class="col">调整光源在(x, y)的位置</div>
             </div>
             <div class="row">
-                <div class="col">Scroll Mouse Wheel</div>
+                <div class="col">滑动鼠标轮滑</div>
                 :
-                <div class="col">Adjust z of light source</div>
+                <div class="col">调整光源在z的位置</div>
             </div>
             <br>
             <div class="row">
-                To change image, pick an image from the dropdown menu, and click reload.
+                要改变图片的话，请在菜单栏中下拉菜单，选择新图片，然后再点击reload按钮。
             </div>
             <hr>
             <div class="row">
@@ -65,7 +65,7 @@
                 <div class="col">
                     <div class="form-group row d-flex justify-content-between">
                         <div class="p-0 align-self-center">
-                            <span class="image-label"> Image: </span>
+                            <span class="image-label"> 图像: </span>
                         </div>
                         <div class="p-0 align-self-center">
                             <select class="col-form-label-md" class="custom-select" id="image-select"></select>
@@ -76,10 +76,10 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <h6 class=""><u>Light Controls</u></h6>
+                        <h6 class=""><u>光源控制</u></h6>
                     </div>
                     <div class="row">
-                        <span class="col">Light Position:</span>
+                        <span class="col">光源位置:</span>
                         <span class="col" id="light-pos-span"></span>
                     </div>
                     <br>
@@ -97,7 +97,7 @@
                     </div>
                     <hr>
                     <div class="form-group row">
-                        <label class="form-control-md" for="lightIntensitySlider">Light Intensity: &nbsp;&nbsp;</label>
+                        <label class="form-control-md" for="lightIntensitySlider">光源强度: &nbsp;&nbsp;</label>
                         <span class="form-control-md" id="light-intensity-span"></span>
                         <input class="form-control-range" type="range" id="lightIntensitySlider" min="0" max="200">
                     </div>
@@ -106,11 +106,11 @@
                         <div class="col">
                             <div class="form-check">
                                 <input class="form-control-md" type="checkbox" id="lighting-checkbox" checked>
-                                <label class="form-check-label col-form-label-md" for="lighting-checkbox">Light</label>
+                                <label class="form-check-label col-form-label-md" for="lighting-checkbox">Phong光照贴图</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-control-md" type="checkbox" id="texture-checkbox" checked>
-                                <label class="form-check-label col-form-label-md" for="texture-checkbox">Texture</label>
+                                <label class="form-check-label col-form-label-md" for="texture-checkbox">纹理贴图</label>
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
             <div class="overlay-content-container">
                 <div class="spinner"></div>
                 <br>
-                Creating Mesh. Please Wait!
+                正在创建网格，请等待!
             </div>
         </div>
     </body>
