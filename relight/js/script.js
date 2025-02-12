@@ -39,10 +39,10 @@ var images = {
         "image11.jpg",
         "image12.jpg",
         "image13.jpg",
-        'image14.jpg',
+        'image14.png',
         'image15.jpg',
     ],
-    texRoot: './images/data1/image/',
+    texRoot: './images/data1/albedo/',
     depthRoot: './images/data1/depth/'
 };
 
