@@ -42,11 +42,11 @@ var images = {
         'image14.png',
         'image15.jpg',
     ],
-    texRoot: './images/data1/albedo/',
+    texRoot: './images/data1/image/',
     depthRoot: './images/data1/depth/'
 };
 
-var imgIdx = 8;
+var imgIdx = 14;
 
 var canvasDrag = false;
 var mouseInCanvas = false;
