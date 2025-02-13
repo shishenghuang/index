@@ -46,6 +46,8 @@ var images = {
     depthRoot: './images/data1/depth/'
 };
 
+
+
 var imgIdx = 14;
 
 var canvasDrag = false;
