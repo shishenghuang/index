@@ -95,6 +95,9 @@ function startProcessing() {
     zlightSlider.value = -100.00;
     zlightSlider.addEventListener('input', sliderUpdate);
 
+    dxlightSlider = document.getElementById('dxlightSlider');
+    dylightSlider = document.getElementById('dylightSlider');
+    dzlightSlider = document.getElementById('dzlightSlider');
     diffuseColorSpan = document.getElementById('diffuse-color-span');
 
     dxlightSlider.value = 90.00;
