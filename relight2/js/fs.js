@@ -62,7 +62,7 @@ var fs_src = `
             float sz = pow(scale_light_linear.z , 1.0 / 2.2);
             vec3 scale_light_linear_1 = vec3(sx , sy, sz);
             vec3 new_tex_color = scale_light_linear_1 * 255.0;
-            new_tex_color = min(max(new_color_linear, 0.0) , 255.0);
+            new_tex_color = min(max(new_tex_color, 0.0) , 255.0);
             gl_FragColor = vec4(new_tex_color , texColor.w);
             // gl_FragColor = texColor + vec4(scale_light_linear * texColor.xyz, 0.0);
         }
