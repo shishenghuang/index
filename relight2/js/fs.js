@@ -52,7 +52,12 @@ var fs_src = `
         } else if (textureLighting == 2) {
             gl_FragColor = vec4(lightIntensity * color, 1.0);
         } else if (textureLighting == 3) {
-            gl_FragColor = texColor + vec4(lightIntensity * texColor.xyz * color, 0.0);
+            // gl_FragColor = texColor + vec4(lightIntensity * texColor.xyz * color, 0.0);
+            original_color_linear = texColor.xyz
+            original_light_linear =  lightIntensity * color
+            scale_light_linear = min(max(original_light_linear, 0.0) , 1.0)
+            scale_light_linear = pow(scale_light_linear , 1.0 / 2.2)
+            gl_FragColor = texColor + vec4(scale_light_linear * texColor.xyz, 0.0);
         }
     }
 `;
