@@ -53,18 +53,22 @@ var fs_src = `
             gl_FragColor = vec4(lightIntensity * color, 1.0);
         } else if (textureLighting == 3) {
             // gl_FragColor = texColor + vec4(lightIntensity * texColor.xyz * color, 0.0);
-            vec3 original_color_linear = texColor.xyz / 255.0;
-            vec3 original_light_linear =  lightIntensity * color * texColor.xyz / 255.0;
-            vec3 new_color_linear = (original_color_linear + original_light_linear) / 2.0;
-            vec3 scale_light_linear = min(max(new_color_linear, 0.0) , 1.0);
-            float sx = pow(scale_light_linear.x , 1.0 / 2.2);
-            float sy = pow(scale_light_linear.y , 1.0 / 2.2);
-            float sz = pow(scale_light_linear.z , 1.0 / 2.2);
-            vec3 scale_light_linear_1 = vec3(sx , sy, sz);
-            vec3 new_tex_color = scale_light_linear_1 * 255.0;
-            new_tex_color = min(max(new_tex_color, 0.0) , 255.0);
-            gl_FragColor = vec4(new_tex_color , texColor.w);
-            // gl_FragColor = texColor + vec4(scale_light_linear * texColor.xyz, 0.0);
+            vec3 original_color_linear = texColor.xyz ;
+            vec3 original_light_linear =  lightIntensity * color * texColor.xyz
+            vec3 blend_color = ( original_color_linear + original_light_linear ) / 2.0;
+            gl_FragColor = vec4(blend_color, 0.0);
+            // vec3 original_color_linear = texColor.xyz / 255.0;
+            // vec3 original_light_linear =  lightIntensity * color * texColor.xyz / 255.0;
+            // vec3 new_color_linear = (original_color_linear + original_light_linear) / 2.0;
+            // vec3 scale_light_linear = min(max(new_color_linear, 0.0) , 1.0);
+            // float sx = pow(scale_light_linear.x , 1.0 / 2.2);
+            // float sy = pow(scale_light_linear.y , 1.0 / 2.2);
+            // float sz = pow(scale_light_linear.z , 1.0 / 2.2);
+            // vec3 scale_light_linear_1 = vec3(sx , sy, sz);
+            // vec3 new_tex_color = scale_light_linear_1 * 255.0;
+            // new_tex_color = min(max(new_tex_color, 0.0) , 255.0);
+            // gl_FragColor = vec4(new_tex_color , texColor.w);
+            // // gl_FragColor = texColor + vec4(scale_light_linear * texColor.xyz, 0.0);
         }
     }
 `;
