@@ -54,7 +54,7 @@ var fs_src = `
         } else if (textureLighting == 3) {
             // gl_FragColor = texColor + vec4(lightIntensity * texColor.xyz * color, 0.0);
             vec3 original_color_linear = texColor.xyz ;
-            vec3 original_light_linear =  lightIntensity * color * texColor.xyz
+            vec3 original_light_linear =  lightIntensity * color * texColor.xyz ;
             vec3 blend_color = ( original_color_linear + original_light_linear ) / 2.0;
             gl_FragColor = vec4(blend_color, texColor.w);
             // vec3 original_color_linear = texColor.xyz / 255.0;
