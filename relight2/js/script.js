@@ -15,6 +15,12 @@ var ylightSlider;
 var zlightSlider;
 var lightPosSpan;
 
+var diffuseColor = [0.9, 0.9, 0.9];
+var dxlightSlider; 
+var dylightSlider;
+var dzlightSlider;
+var diffuseColorSpan;
+
 var lightingCheckbox;
 var textureCheckbox;
 var textureLighting = 3;
@@ -78,6 +84,7 @@ function startProcessing() {
     ylightSlider = document.getElementById('ylightSlider');
     zlightSlider = document.getElementById('zlightSlider');
     lightPosSpan = document.getElementById('light-pos-span');
+    // diffuseColorSpan = document.getElementById('diffuse-color-span');
 
     xlightSlider.value = 0.00;
     xlightSlider.addEventListener('input', sliderUpdate);
@@ -87,6 +94,17 @@ function startProcessing() {
 
     zlightSlider.value = -100.00;
     zlightSlider.addEventListener('input', sliderUpdate);
+
+    diffuseColorSpan = document.getElementById('diffuse-color-span');
+
+    dxlightSlider.value = 90.00;
+    dxlightSlider.addEventListener('input', sliderUpdate);
+
+    dylightSlider.value = 90.00;
+    dylightSlider.addEventListener('input', sliderUpdate);
+
+    dzlightSlider.value = 90.00;
+    dzlightSlider.addEventListener('input', sliderUpdate);
 
     lightingCheckbox = document.getElementById('lighting-checkbox');
     textureCheckbox = document.getElementById('texture-checkbox');
@@ -139,6 +157,8 @@ function startProcessing() {
     document.getElementById('loader-overlay-div').setAttribute('style', 'display: none; visibility: hidden;')
     lightPosSpan.innerHTML = '[' + lightPos[0].toFixed(2) + ', ' + lightPos[1].toFixed(2) + ', ' + lightPos[2].toFixed(2) + ']';
     lightIntensitySpan.innerHTML = lightIntensity;
+    diffuseColorSpan.innerHTML = '[' + diffuseColor[0].toFixed(2) + ', ' + diffuseColor[1].toFixed(2) + ', ' + diffuseColor[2].toFixed(2) + ']';
+
     draw();
 
     setupImageSelector();
@@ -166,6 +186,10 @@ function sliderUpdate() {
     
     lightIntensity = lightIntensitySlider.value / 100;
     lightIntensitySpan.innerHTML = lightIntensity;
+
+    diffuseColor = [dxlightSlider.value / 100, dylightSlider.value / 100, dzlightSlider.value / 100];
+    diffuseColorSpan.innerHTML = '[' + diffuseColor[0].toFixed(2) + ', ' + diffuseColor[1].toFixed(2) + ', ' + diffuseColor[2].toFixed(2) + ']';
+
     draw();
 }
 
@@ -295,6 +319,7 @@ function setupShaderAttributes() {
     shaderProgram.imgSizeUnif = gl.getUniformLocation(shaderProgram, 'imgSize');
     shaderProgram.minMaxZUnif = gl.getUniformLocation(shaderProgram, 'minMaxZ');
     shaderProgram.lightPos = gl.getUniformLocation(shaderProgram, 'lightPos');
+    shaderProgram.diffuseColor = gl.getUniformLocation(shaderProgram, 'diffuseColor');
     shaderProgram.texSampler = gl.getUniformLocation(shaderProgram, 'texSampler');
     shaderProgram.textureLighting = gl.getUniformLocation(shaderProgram, 'textureLighting');
     shaderProgram.lightIntensity = gl.getUniformLocation(shaderProgram, 'lightIntensity');
@@ -324,6 +349,7 @@ function draw() {
     gl.uniform2fv(shaderProgram.imgSizeUnif, new Float32Array(ImgHelper.getImageSize()));
     gl.uniform2fv(shaderProgram.minMaxZUnif, new Float32Array([ImgHelper.minZ, ImgHelper.maxZ]));
     gl.uniform3fv(shaderProgram.lightPos, new Float32Array(lightPos));
+    gl.uniform3fv(shaderProgram.diffuseColor, new Float32Array(diffuseColor));
     gl.uniform1i(shaderProgram.texSampler, 0);
     gl.uniform1i(shaderProgram.textureLighting, textureLighting);
     gl.uniform1f(shaderProgram.lightIntensity, lightIntensity);
